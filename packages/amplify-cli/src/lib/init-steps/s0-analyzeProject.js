@@ -134,7 +134,7 @@ async function getEnvName(context) {
       ({ envName } = context.exeInfo.inputParams.amplify);
       return envName;
     }
-    context.print.error('Environment name should be between 2 and 10 characters (only lowercase alphabets).');
+    context.print.error('Environment name should be between 2 and 11 characters (only lowercase alphabets).');
     process.exit(1);
   } else if (context.exeInfo.inputParams && context.exeInfo.inputParams.yes) {
     context.print.error('Environment name missing');
@@ -146,7 +146,7 @@ async function getEnvName(context) {
       type: 'input',
       name: 'envName',
       message: 'Enter a name for the environment',
-      validate: input => new Promise((resolvePromise, reject) => (!isEnvNameValid(input) ? reject(new Error('Environment name should be between 2 and 10 characters (only lowercase alphabets).')) : resolvePromise(true))),
+      validate: input => new Promise((resolvePromise, reject) => (!isEnvNameValid(input) ? reject(new Error('Environment name should be between 2 and 11 characters (only lowercase alphabets).')) : resolvePromise(true))),
     };
 
     ({ envName } = await inquirer.prompt(envNameQuestion));
